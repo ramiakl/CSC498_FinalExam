@@ -6,10 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    String[] courses;
-    int index;
+    ArrayList<String> course_list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +32,10 @@ public class MainActivity extends AppCompatActivity {
             int courseIndex = c.getColumnIndex("course_name");
             c.moveToFirst();
 
-            index = 0;
-            courses = new String[4];
             while(c!=null){
-                
-                courses[index] = c.getString(courseIndex);
+
+                course_list.add(c.getString(courseIndex));
                 c.moveToNext();
-                index++;
             }
 
 
