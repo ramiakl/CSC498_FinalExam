@@ -5,18 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> course_list;
+    ListView list;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        list = findViewById(R.id.list);
 
         try{
 
@@ -33,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
             c.moveToFirst();
 
             while(c!=null){
-
                 course_list.add(c.getString(courseIndex));
                 c.moveToNext();
             }
 
-
+            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, course_list);
+            list.setAdapter(adapter);
 
 
         }catch (Exception e){
