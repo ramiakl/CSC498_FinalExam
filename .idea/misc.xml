@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Rami/AndroidStudioProjects/FinalExam/app/src/main/res/layout/activity_main.xml" value="0.2546875" />
+        <entry key="..\:/Users/Rami/AndroidStudioProjects/FinalExam/app/src/main/res/layout/activity_main.xml" value="0.1897810218978102" />
+        <entry key="..\:/Users/Rami/AndroidStudioProjects/FinalExam/app/src/main/res/layout/activity_webview.xml" value="0.2546875" />
+        <entry key="..\:/Users/Rami/AndroidStudioProjects/FinalExam/app/src/main/res/layout/grid_list.xml" value="0.2546875" />
       </map>
     </option>
   </component>
