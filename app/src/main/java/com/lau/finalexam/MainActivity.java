@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
+// This class create a local databse and connect it to a listview
 
     ArrayAdapter<String> adapter;
     int index;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         list = (ListView) findViewById(R.id.list);
 
         try{
-
+            // creating and storing values in the databse
             SQLiteDatabase sql = this.openOrCreateDatabase("laudb", MODE_PRIVATE, null);
             //sql.execSQL("CREATE Table IF NOT EXISTS courses (course_name VARCHAR, link VARCHAR)");
 
@@ -48,15 +49,15 @@ public class MainActivity extends AppCompatActivity {
             index = 0;
             courses = new String[4];
 
+            //going through the database and getting the elements
             while(index<4){
 
                 courses[index] = c.getString(courseIndex);
-                Log.i("cour",courses[index]);
                 index++;
                 c.moveToNext();
             }
 
-            Log.i("string",Arrays.toString(courses));
+            // setting up the adapter
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, courses);
             list.setAdapter(adapter);
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Toast.makeText(getApplicationContext(), courses[i], Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(),Webview.class);
-                    intent.putExtra("chosen",courses[i]);
+                    intent.putExtra("chosen",courses[i]);// sending the course that was chosen
                     startActivity(intent);
                 }
             });

@@ -10,6 +10,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class Webview extends AppCompatActivity {
+// This class displays the webview of the chosen exam
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +24,13 @@ public class Webview extends AppCompatActivity {
         Intent x = getIntent();
         String course = x.getStringExtra("chosen");
 
+        //Selecting the link of the chosen course
         SQLiteDatabase sql = this.openOrCreateDatabase("laudb", MODE_PRIVATE, null);
         Cursor c = sql.rawQuery("Select link from courses WHERE course_name ='"+course+"'" , null);
 
         int courseIndex = c.getColumnIndex("link");
         c.moveToFirst();
         String url = c.getString(courseIndex);
-        view.loadUrl(url);
+        view.loadUrl(url); // loading the url that we got from the database
     }
 }
